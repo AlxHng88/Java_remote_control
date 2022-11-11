@@ -1,8 +1,6 @@
 package Client.view;
 import Client.controller.*;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,6 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class client extends JFrame {
@@ -63,6 +62,19 @@ public class client extends JFrame {
         JButton btnCapture = new JButton("Capture");
         btnCapture.setBounds(300, 54, 120, 80);
         contentPane.add(btnCapture);
+        btnCapture.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Connect.dOut = new DataOutputStream(Connect.server.getOutputStream());
+                try {
+                    Connect.client.dOut.writeUTF("TAKEPIC");
+                    Connect.dOut.flush();
+                    Connect.dOut.close();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            };
+        });
 
         JButton btnProcess = new JButton("Process Running");
         btnProcess.setBounds(20, 144, 140, 80);
