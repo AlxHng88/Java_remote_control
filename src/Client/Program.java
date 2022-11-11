@@ -1,8 +1,9 @@
 package Client;
-
 import Client.view.client;
 
 import java.awt.*;
+import java.io.*;
+import java.net.*;
 
 public class Program {
 
@@ -11,7 +12,6 @@ public class Program {
             public void run() {
                 try {
                     client frame = new client();
-                    System.out.println("Start Success!");
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();

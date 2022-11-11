@@ -1,5 +1,5 @@
 package Client.view;
-
+import Client.controller.*;
 
 import java.awt.EventQueue;
 
@@ -8,6 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class client extends JFrame {
 
@@ -37,6 +40,17 @@ public class client extends JFrame {
         JButton btnConnect = new JButton("Connect");
         btnConnect.setBounds(335, 9, 85, 35);
         contentPane.add(btnConnect);
+        btnConnect.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(txtIP != null){
+                    try {
+                        Connect connect = new Connect(txtIP.getText());
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            };
+        });
 
         JButton btnApp = new JButton("App Running");
         btnApp.setBounds(20, 54, 140, 80);
