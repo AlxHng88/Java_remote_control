@@ -11,6 +11,7 @@ public class Program {
             public void run() {
                 try {
                     client frame = new client();
+                    System.out.println("Start Success!");
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
